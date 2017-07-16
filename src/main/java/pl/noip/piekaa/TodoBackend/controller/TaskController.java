@@ -2,8 +2,6 @@ package pl.noip.piekaa.TodoBackend.controller;
 
 import org.springframework.web.bind.annotation.*;
 import pl.noip.piekaa.TodoBackend.model.Task;
-import pl.noip.piekaa.TodoBackend.model.TaskConnection;
-import pl.noip.piekaa.TodoBackend.repository.TaskConnectionRepository;
 import pl.noip.piekaa.TodoBackend.repository.TaskRepository;
 
 import java.util.List;
@@ -17,11 +15,9 @@ import java.util.List;
 public class TaskController {
 
     private TaskRepository taskRepository;
-    private TaskConnectionRepository taskConnectionRepository;
 
-    public TaskController(TaskRepository taskRepository, TaskConnectionRepository taskConnectionRepository) {
+    public TaskController(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-        this.taskConnectionRepository = taskConnectionRepository;
     }
 
     @RequestMapping(value = "/subtasks/{id}", method = RequestMethod.GET)
@@ -38,12 +34,8 @@ public class TaskController {
     @RequestMapping(value = "/task", method = RequestMethod.POST)
     public void addTask(@RequestBody Task task) {
 
-        TaskConnection taskConnection = new TaskConnection();
-
-        taskConnection.setParentId(task.getParentTaskId());
-        taskConnection.setChildId(task.getId());
+        System.out.println(task);
         taskRepository.save(task);
-        taskConnectionRepository.save(taskConnection);
     }
 
     @RequestMapping(value = "/task/done/{id}", method = RequestMethod.PUT)

@@ -4,3 +4,4 @@ spring.datasource.password=xxxx
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.jpa.generate-ddl=true
 spring.jackson.serialization.fail-on-empty-beans=false
+spring.datasource.connectionProperties=useUnicode=true;characterEncoding=utf-8;
