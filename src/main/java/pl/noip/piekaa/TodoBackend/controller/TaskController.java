@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by pieka on 08.07.17.
  */
-@CrossOrigin
+@CrossOrigin( origins = {"localhost:3000", "10.0.181.186:3000", "piekaa.noip.pl"})
 @RestController
 @RequestMapping("/api")
 public class TaskController {
